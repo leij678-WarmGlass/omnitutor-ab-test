@@ -1,28 +1,136 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>OmniTutor Kids · A/B Test</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap">
-<link rel="stylesheet" href="style.css"></head>
-<body><div class="wrap">
-  <div class="top"><div class="brand">OmniTutor Kids</div><span class="note">AI 苏格拉底式学习助手 · 4–6 年级</span></div>
-  <h1>加一张图解，讲解清晰度从 4.67 升到 6.00</h1>
-  <p class="note">我们只改了一个变量：在关键讲解步骤加入可视化图解。24 人配对 A/B 测试，6 项体验指标全部显著提升。</p>
-  <div class="links">
-    <a class="btn A" href="a.html">体验 Product A · 纯文字</a>
-    <a class="btn B" href="b.html">体验 Product B · 加图解</a>
-  </div>
-  <div class="card">
-    <h2>实验结果</h2>
-    <img src="assets/results.png" alt="A/B 测试六项指标均值对比柱状图">
-    <div class="tbl"><table>
-      <tr><th>指标（1–7 分）</th><th>A</th><th>B</th><th>差值</th><th>Cohen's dz</th></tr>
-      <tr><td>准确性</td><td>4.88</td><td>5.58</td><td>+0.71</td><td>0.78</td></tr>
-      <tr><td>效率</td><td>4.96</td><td>5.46</td><td>+0.50</td><td>0.64</td></tr>
-      <tr><td>知识帮助</td><td>4.83</td><td>5.67</td><td>+0.83</td><td>0.76</td></tr>
-      <tr><td>满意度</td><td>4.54</td><td>5.67</td><td>+1.13</td><td>0.94</td></tr>
-      <tr><td>付费意愿</td><td>3.67</td><td>4.67</td><td>+1.00</td><td>0.94</td></tr>
-      <tr><td><b>讲解清晰度</b></td><td>4.67</td><td><b>6.00</b></td><td>+1.33</td><td><b>1.75</b></td></tr>
-    </table></div>
-    <p class="note">单尾配对 t 检验，全部 p &lt; .01；Wilcoxon 符号秩检验结果一致。愿意继续使用 B 的 16 人，A 仅 1 人；开放评论正面占比由 38% 升至 96%。</p>
-  </div>
-  <p class="note">本页是测试版本的轻量网页复刻，用于作品展示；对话为脚本演示。</p>
-</div></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>OmniTutor Kids · A/B 两版产品</title>
+<meta name="description" content="OmniTutor Kids：面向 4–6 年级的 AI 苏格拉底学伴。Product A 纯文字引导，Product B 加入可视化分步图解。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --bg:#F6F4FF; --panel:#FFFFFF; --ink:#1E1B3A; --muted:#625E80; --line:#E3DEF7;
+  --violet:#6D28D9; --violet-soft:#EDE7FE; --grey:#8B8AA0; --amber:#F59E0B;
+  --f-display:"Nunito","Noto Sans SC",system-ui,sans-serif; --f-body:"Noto Sans SC","Nunito",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7;
+  padding:28px max(16px,env(safe-area-inset-left)) 56px max(16px,env(safe-area-inset-right))}
+.wrap{max-width:1040px;margin:0 auto;display:grid;gap:44px}
+a{color:var(--violet)}
+.eyebrow{font-family:var(--f-display);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
+h1{font-family:var(--f-display);font-weight:900;font-size:clamp(32px,6vw,52px);line-height:1.1;margin:6px 0 12px;text-wrap:balance}
+h2{font-family:var(--f-display);font-weight:900;font-size:clamp(24px,4vw,32px);line-height:1.2;margin:0 0 6px;text-wrap:balance}
+p{margin:0}
+.lede{color:var(--muted);max-width:62ch;font-size:17px}
+section{display:grid;gap:18px}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:760px){.products{grid-template-columns:minmax(0,1fr)}}
+.prod{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;gap:14px;align-content:start}
+.prod.b{border:2px solid var(--violet)}
+.prod-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.badge{font-family:var(--f-display);font-weight:900;font-size:15px;padding:4px 12px;border-radius:999px;color:#fff;background:var(--grey)}
+.prod.b .badge{background:var(--violet)}
+.prod h3{margin:0;font-size:19px}
+.prod p{color:var(--muted);font-size:15px}
+.shot{border-radius:16px;border:1px solid var(--line);width:100%;height:auto;display:block}
+.open{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:700;border-radius:14px;padding:12px 18px;background:var(--ink);color:#fff}
+.prod.b .open{background:var(--violet)}
+.open:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.diff{background:var(--violet-soft);border-radius:18px;padding:18px 20px;display:grid;gap:8px}
+.diff b{color:var(--violet)}
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.how{grid-template-columns:minmax(0,1fr)}}
+.how div{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.how b{display:block;font-family:var(--f-display);font-size:15px}
+.how span{color:var(--muted);font-size:14px}
+.flows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+@media (max-width:760px){.flows{grid-template-columns:minmax(0,1fr)}}
+figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:8px}
+figure img{width:100%;height:auto;display:block;border-radius:10px}
+figcaption{font-size:14px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px}
+.results{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;gap:14px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:600px){.stats{grid-template-columns:minmax(0,1fr)}}
+.stat{border-left:4px solid var(--violet);padding:4px 12px}
+.stat strong{font-family:var(--f-display);font-weight:900;font-size:26px;display:block;line-height:1.2;font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--muted)}
+.results img{width:100%;height:auto;border-radius:10px}
+.files{display:flex;flex-wrap:wrap;gap:10px}
+.files a{font-size:14px;font-weight:700;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 14px;background:var(--bg)}
+.note{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">OmniTutor Kids · AI 苏格拉底学伴</div>
+    <h1>同一个学伴，两个版本</h1>
+    <p class="lede">面向 4–6 年级学生的 AI 学习助手：不直接给答案，而是一步步提问、引导孩子自己想出来。我们做了两个版本，只差一个功能，用来验证"讲解里加一张图"是否能让孩子更容易听懂。</p>
+  </header>
+
+  <section aria-labelledby="try">
+    <h2 id="try">打开两个版本试一试</h2>
+    <div class="products">
+      <article class="prod">
+        <div class="prod-head"><h3>纯文字引导</h3><span class="badge">Product A</span></div>
+        <img class="shot" src="images/step-product-a.jpg" alt="Product A 对话截图：只有文字讲解" loading="lazy">
+        <p>苏格拉底式对话、答题反馈、对话结尾小结、巩固练习，全部用文字完成。</p>
+        <a class="open" href="product-a/">打开 Product A →</a>
+      </article>
+      <article class="prod b">
+        <div class="prod-head"><h3>文字 + 分步图解</h3><span class="badge">Product B</span></div>
+        <img class="shot" src="images/step-product-b.jpg" alt="Product B 对话截图：同一步骤多了三袋饼干的图解" loading="lazy">
+        <p>和 A 完全相同的流程，只是在关键讲解、小结和练习反馈处，加了一张概念图解。</p>
+        <a class="open" href="product-b/">打开 Product B →</a>
+      </article>
+    </div>
+    <div class="diff">
+      <p><b>两版唯一的区别：</b>Product B 在三个讲解节点（举例鼓励、补充教学、答错引导）以及对话小结和练习反馈里，附上一张可视化图解，比如把 3×5 画成"3 袋饼干"，用颜色框标出"先乘后加"。</p>
+      <p class="note">体验路径：选"跳过登录（访客模式）"→ 数学 → 选例题 3 × 5 + 2 → 开始学习，故意选错一次就能看到图解。也可以用学生、教师、家长三种演示账号进入。</p>
+    </div>
+    <div class="how">
+      <div><b>学生端</b><span>选科目提问，AI 苏格拉底式引导；对话结束有小结和 2 道巩固题。支持中、英、韩三种语言。</span></div>
+      <div><b>家长端</b><span>每周学习报告：各科表现、学习时长、解题数、待提升知识点。</span></div>
+      <div><b>教师端</b><span>班级总览、学生进度、题库管理和布置作业，学生进度自动同步。</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="flow">
+    <h2 id="flow">产品流程</h2>
+    <p class="lede">两版共用同一套用户旅程：登录选角色 → 学生仪表盘 → 提问或练习 → 答题反馈 → 小结 → 巩固练习 → 进度同步到家长和教师端。</p>
+    <div class="legend"><span><i style="background:#E5E5EA;border:1px solid #999"></i>灰色：两版共用的基础流程</span><span><i style="background:#EDE7FE;border:2px solid var(--violet)"></i>紫色：Product B 新增的图解</span></div>
+    <div class="flows">
+      <figure>
+        <a href="flow/flow-product-a.png"><img src="flow/flow-product-a.png" alt="Product A 用户旅程流程图" loading="lazy"></a>
+        <figcaption>Product A 用户旅程（点击看大图）</figcaption>
+      </figure>
+      <figure>
+        <a href="flow/flow-product-b.png"><img src="flow/flow-product-b.png" alt="Product B 用户旅程流程图，紫色虚线标出新增图解的位置" loading="lazy"></a>
+        <figcaption>Product B 用户旅程：紫色虚线标出图解出现的位置（点击看大图）</figcaption>
+      </figure>
+    </div>
+    <div class="files"><a href="flow/journey-flow-A-B.pdf">下载流程图 PDF</a></div>
+  </section>
+
+  <section aria-labelledby="test" class="results">
+    <div class="eyebrow">附：A/B 测试结果</div>
+    <h2 id="test">加了图解，讲解清晰度从 4.67 升到 6.00</h2>
+    <div class="stats">
+      <div class="stat"><strong>6 / 6</strong><span>项体验指标显著提升（配对 t 检验，p &lt; .01）</span></div>
+      <div class="stat"><strong>dz = 1.75</strong><span>讲解清晰度的效应量，提升最大</span></div>
+      <div class="stat"><strong>16 : 1</strong><span>愿意继续用 B 和 A 的人数（n = 24）</span></div>
+    </div>
+    <img src="analysis/results.png" alt="六项指标 A 与 B 的平均分对比柱状图" loading="lazy">
+    <div class="files">
+      <a href="analysis/hypothesis_results.csv">六个假设的检验结果 CSV</a>
+      <a href="analysis/ab_test_analysis.ipynb">分析代码 Notebook</a>
+    </div>
+  </section>
+
+  <p class="note">UNSW 产品分析课程小组项目。网页为演示模式（脚本对话）；在应用右上角填入自己的 Gemini API 密钥后可切换为真实 AI 对话。</p>
+</div>
+</body>
+</html>

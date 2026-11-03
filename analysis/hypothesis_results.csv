@@ -1,0 +1,7 @@
+Hypothesis,Dimension,Statement,Mean_A,Mean_B,Mean_diff,t,p_two_sided,p_one_sided_B_gt_A,Wilcoxon_p,Cohens_d,Supported
+H1,Accuracy,Product B is rated more accurate than Product A,4.88,5.58,0.71,3.822,0.0009,0.0004,0.0018,0.78,YES
+H2,Efficiency,Product B helps users understand more quickly than Product A,4.96,5.46,0.5,3.14,0.0046,0.0023,0.0073,0.64,YES
+H3,Knowledge,Product B is rated more knowledgeable than Product A,4.83,5.67,0.83,3.745,0.0011,0.0005,0.0035,0.76,YES
+H4,Satisfaction,Users are more satisfied with Product B than Product A,4.54,5.67,1.12,4.628,0.0001,0.0001,0.0004,0.94,YES
+H5,Willingness_to_pay,Users are more willing to pay for Product B than Product A,3.67,4.67,1.0,4.608,0.0001,0.0001,0.0007,0.94,YES
+H6,Clarity,Product B explanations are clearer than Product A,4.67,6.0,1.33,8.579,0.0,0.0,0.0001,1.75,YES
