@@ -9,8 +9,10 @@
 | | 链接 | 说明 |
 |---|---|---|
 | 首页 | https://leij678-warmglass.github.io/omnitutor-ab-test/ | 两版对比、产品流程、测试结果 |
-| Product A | https://leij678-warmglass.github.io/omnitutor-ab-test/product-a/ | 纯文字苏格拉底式引导 |
-| Product B | https://leij678-warmglass.github.io/omnitutor-ab-test/product-b/ | 同样的流程 + 分步可视化图解 |
+| Product A | https://loom-swing-43299802.figma.site/ | 纯文字苏格拉底式引导 |
+| Product B | https://omnitutorpro.netlify.app/ | 同样的流程 + 分步可视化图解 |
+
+两个版本的代码也放在本仓库里（`product-a/`、`product-b/`），首页的"GitHub 镜像版"可以直接打开。
 
 **体验路径：** 跳过登录（访客模式）→ 数学 → 例题 3 × 5 + 2 → 开始学习。故意选错一次，就能看到 B 版的图解。也可以用学生、教师、家长三种演示账号进入。
 
